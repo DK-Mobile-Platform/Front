@@ -4,6 +4,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:mobileplatform_project/view/widget/appBar.dart';
 import 'package:mobileplatform_project/view/home/resultPage.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +18,37 @@ class _HomePageState extends State<HomePage> {
   bool _loading = false;
   bool _dataReceived = false;
   String? _attachedFileName;
+  String? _summarizeText;
+
+  Future<void> fetchData() async {
+    setState(() {
+      _loading = true;
+    });
+    // 여기서 이제 이전 음성 모델에서 추출한 텍스트를 변수에 지정한다.
+    final Text_ =
+        '머신러닝은 데이터 과학과 컴퓨터 공학의 교차점에 위치한 분야로, 컴퓨터가 데이터로부터 패턴을 발견하고 학습하여 작업을 자동화하거나 예측하는 기술입니다." 또한 머신러닝은 자율 주행 자동차, 음성 인식, 언어 번역, 추천 시스템 등 다양한 응용 분야에서 혁신을 이끌고 있습니다. 이러한 기술의 발전은 데이터의 양과 품질이 증가함에 따라 더욱 가속화되고 있으며, 머신러닝은 미래의 기술과 산업을 선도하는 핵심 역할을 수행할 것으로 기대됩니다.'; // 파일 이름 변수 설정
+    final response = await http.post(Uri.parse('http://**********/AI_process/?text=$Text_'));
+
+    if (response.statusCode == 200) {
+      final jsonResponse=json.decode(utf8.decode(response.bodyBytes));
+      print(jsonResponse);
+      final summarizeText = jsonResponse['summarize_text'];
+
+
+      // 여기서 데이터를 처리하거나 상태를 업데이트합니다.
+      setState(() {
+        _dataReceived = true;
+        _loading = false;
+        _summarizeText = summarizeText;
+      });
+    } else {
+      // API 호출에 실패한 경우 처리할 코드를 추가합니다.
+      setState(() {
+        _loading = false;
+      });
+      throw Exception('Failed to load data');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +123,9 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 300,
               color: Colors.grey[300],
+              child: _summarizeText != null
+                  ? Text(_summarizeText!)
+                  : Text('요약된 텍스트가 없습니다.'),
             ),
             SizedBox(height: 30),
             SizedBox(
@@ -107,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                 child: ElevatedButton(
                   onPressed: () => _navigateToResultPage(context),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     elevation: 0,
                   ),
                   child: Text(
@@ -202,7 +238,7 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => _attachFile(context),
               style: ElevatedButton.styleFrom(
-                primary: Colors.white,
+                backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                   side: BorderSide(color: Colors.grey),
@@ -240,19 +276,20 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      _loading = true;
-                      //백엔드로 부터 데이터를 가져왔는지 확인 하는 코드로 변경해야 함
-                      Future.delayed(Duration(seconds: 5), () {
-                        setState(() {
-                          _dataReceived = true;
-                          _loading = false;
-                        });
-                      });
-                    });
+                    fetchData();
+                    // setState(() {
+                    //   _loading = true;
+                    //   //백엔드로 부터 데이터를 가져왔는지 확인 하는 코드로 변경해야 함
+                    //   Future.delayed(Duration(seconds: 5), () {
+                    //     setState(() {
+                    //       _dataReceived = true;
+                    //       _loading = false;
+                    //     });
+                    //   });
+                    // });
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     elevation: 0,
                   ),
                   child: Text(

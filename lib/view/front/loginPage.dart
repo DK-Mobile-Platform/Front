@@ -88,7 +88,7 @@ class LoginPage extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => _navigateToMainPage(context),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     elevation: 0,
                   ),
                   child: Text(
