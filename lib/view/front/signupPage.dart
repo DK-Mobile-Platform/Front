@@ -217,7 +217,7 @@ class _SignUpFormState extends State<SignUpForm> {
             child: ElevatedButton(
               onPressed: () => viewModel.signUp(),
               style: ElevatedButton.styleFrom(
-                primary: Colors.transparent,
+                backgroundColor: Colors.transparent,
                 elevation: 0,
               ),
               child: Text(

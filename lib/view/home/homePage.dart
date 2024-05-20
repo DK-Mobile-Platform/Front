@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                     child: ElevatedButton(
                       onPressed: () => _saveRecord(context),
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
+                        backgroundColor: Colors.transparent,
                         elevation: 0,
                       ),
                       child: Text(
@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> {
                 ElevatedButton(
                   onPressed: () => _attachFile(context),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
+                    backgroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                       side: BorderSide(color: Colors.grey),
@@ -256,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
+                        backgroundColor: Colors.transparent,
                         elevation: 0,
                       ),
                       child: Text(
