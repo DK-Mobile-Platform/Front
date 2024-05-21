@@ -4,6 +4,8 @@ import 'package:mobileplatform_project/view/widget/appBar.dart';
 import 'package:mobileplatform_project/view/front/loginPage.dart';
 
 class SettingPage extends StatefulWidget {
+  const SettingPage({super.key});
+
   @override
   _SettingPageState createState() => _SettingPageState();
 }

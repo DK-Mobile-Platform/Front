@@ -4,7 +4,7 @@ import 'package:mobileplatform_project/view/history/historyPage.dart';
 import 'package:mobileplatform_project/view/setting/settingPage.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({super.key});
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();

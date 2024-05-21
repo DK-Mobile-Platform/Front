@@ -21,10 +21,10 @@ class FileModel {
 
 class DatabaseHelper {
   static Database? _database;
-  static final String tableName = 'files';
-  static final String columnId = 'id';
-  static final String columnFileName = 'fileName';
-  static final String columnFilePath = 'filePath';
+  static const String tableName = 'files';
+  static const String columnId = 'id';
+  static const String columnFileName = 'fileName';
+  static const String columnFilePath = 'filePath';
 
   Future<Database> get database async {
     if (_database != null) {
@@ -72,6 +72,8 @@ class DatabaseHelper {
 
 
 class HistoryPage extends StatefulWidget {
+  const HistoryPage({super.key});
+
   @override
   _HistoryPageScreen createState() => _HistoryPageScreen();
 }

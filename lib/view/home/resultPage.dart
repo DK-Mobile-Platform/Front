@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobileplatform_project/view/widget/appBar.dart';
 
 class ResultPage extends StatefulWidget {
-  const ResultPage({Key? key}) : super(key: key);
+  const ResultPage({super.key});
 
   @override
   _ResultPageState createState() => _ResultPageState();
