@@ -16,7 +16,7 @@ class LoginViewModel extends ChangeNotifier {
     await DBHelper.getUser(user.username, user.password);
     if (loggedInUser != null) {
       user.userId = user.username; // 만약 로그인에 성공하면 userId를 할당
-      _navigateToMainPage(context);
+      _navigateToMainPage(context,user);
     } else {
       showDialog(
         context: context,
@@ -38,10 +38,10 @@ class LoginViewModel extends ChangeNotifier {
     }
   }
 
-  void _navigateToMainPage(BuildContext context) {
+  void _navigateToMainPage(BuildContext context,User user) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => BottomNavBar()),
+      MaterialPageRoute(builder: (context) => BottomNavBar(user : user)),
     );
   }
 }

@@ -19,6 +19,7 @@ class User {
       'username': username,
       'password': password,
       'country': country,
+      'userId': userId, // userId가 null일 수 있으므로 nullable로 설정
     };
   }
 
@@ -28,6 +29,7 @@ class User {
       username: map['username'],
       password: map['password'],
       country: map['country'],
+      userId: map['userId'], // userId가 null일 수 있으므로 nullable로 설정
     );
   }
 }

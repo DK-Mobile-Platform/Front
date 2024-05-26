@@ -10,7 +10,8 @@ import '../widget/appBar.dart';
 import 'resultDetailPage.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final User user;
+  const HomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -24,11 +25,14 @@ class _HomePageState extends State<HomePage> {
         ChangeNotifierProvider<AIProcessViewModel>(
           create: (context) => AIProcessViewModel(AIProcessDataSource()),
         ),
+        ChangeNotifierProvider<FileAttachViewModel>(
+          create: (context) => FileAttachViewModel(FileAttachDataSource(), widget.user),
+        ),
       ],
-      child: Consumer<User>(
-        builder: (context, user, child) {
+      child: Consumer2<AIProcessViewModel, FileAttachViewModel>(  //User
+        builder: (context, aiViewModel, fileAttachViewModel, child) { //context, user, child
           return ChangeNotifierProvider<FileAttachViewModel>(
-            create: (context) => FileAttachViewModel(FileAttachDataSource(), user),
+            create: (context) => FileAttachViewModel(FileAttachDataSource(), widget.user),
             child: Scaffold(
               appBar: AppBarWidget(),
               body: Center(
@@ -232,7 +236,8 @@ class _HomePageState extends State<HomePage> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       if (fileAttachViewModel.filePath != null) {
-                                        aiViewModel.postUserId(user.userId!); // 수정
+                                        print("ai process start");
+                                        aiViewModel.postUserId(widget.user.userId!); // 수정
                                       } else {
                                         print("No file selected.");
                                       }

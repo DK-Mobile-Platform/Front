@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:mobileplatform_project/model/user.dart';
 import 'package:mobileplatform_project/view/home/homePage.dart';
 import 'package:mobileplatform_project/view/history/historyPage.dart';
 import 'package:mobileplatform_project/view/setting/settingPage.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({Key? key, required this.user}) : super(key: key);
+
+  final User user;
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -12,12 +15,21 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   var _index = 1;
-  final _pages = [
-    HistoryPage(),
-    HomePage(),
-    SettingPage()
-  ];
+  late final User _user;
+  late final List<Widget> _pages;
 
+  @override
+  void initState() {
+    super.initState();
+    _user = widget.user;
+    _pages = [
+      HistoryPage(),
+      HomePage(user: _user),
+      SettingPage(),
+    ];
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

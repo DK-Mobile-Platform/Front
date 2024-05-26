@@ -96,7 +96,10 @@ class _SignUpFormState extends State<SignUpForm> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: TextField(
-            onChanged: (value) => viewModel.user.id = value.toString(),
+            onChanged: (value) {
+              viewModel.user.id = value.toString();
+              viewModel.user.userId = value.toString();
+            },
             decoration: InputDecoration(
               labelText: '아이디',
               border: InputBorder.none,

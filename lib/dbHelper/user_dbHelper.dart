@@ -29,7 +29,7 @@ class DBHelper {
       join(path, 'my_database.db'),
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE users(id TEXT PRIMARY KEY, username TEXT, password TEXT, name TEXT, country TEXT)",
+          "CREATE TABLE users(id TEXT PRIMARY KEY, username TEXT, password TEXT, name TEXT, country TEXT, userID TEXT)",
         );
       },
       version: 1,
@@ -58,6 +58,7 @@ class DBHelper {
         username: maps[0]['username'],
         password: maps[0]['password'],
         country: maps[0]['country'],
+        userId: maps[0]['userId'],
       );
     }
     return null;

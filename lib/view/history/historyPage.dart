@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobileplatform_project/model/user.dart';
 import 'package:mobileplatform_project/view/widget/appBar.dart';
 import 'package:mobileplatform_project/view/history/historyDetailPage.dart';
 
