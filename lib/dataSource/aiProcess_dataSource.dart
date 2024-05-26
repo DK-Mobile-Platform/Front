@@ -7,7 +7,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AIProcessDataSource {
-  final String baseUrl = "http://220.149.250.118:8000"; //실제 주소로 바꿔야함
+  final String baseUrl = "******"; //실제 주소로 바꿔야함
   Future<Map<String, dynamic>> postUserId(String userId) async {
     print("api call  $userId");
     final response = await http.post(

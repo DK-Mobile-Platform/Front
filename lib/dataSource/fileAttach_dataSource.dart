@@ -10,7 +10,7 @@ import '../model/user.dart';
 
 
 class FileAttachDataSource {
-  final String baseUrl = "http://220.149.250.118:8000"; //실제 주소로 바꿔야 함
+  final String baseUrl = "*****"; //실제 주소로 바꿔야 함
 
   Future<void> uploadFile(User user, AttachedFile attachedFile) async {
     var request = http.MultipartRequest('POST', Uri.parse('$baseUrl/Audio_preprocess'))

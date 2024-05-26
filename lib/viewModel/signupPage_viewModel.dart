@@ -23,7 +23,7 @@ class SignUpViewModel extends ChangeNotifier {
           user.country.isNotEmpty) {
         await DBHelper.insertUser(user);
         // api User_initial call
-        final String baseUrl = "http://220.149.250.118:8000"; //실제 주소로 바꿔야함
+        final String baseUrl = "****"; //실제 주소로 바꿔야함
         Future<Map<String, dynamic>> postUserId(String userId) async {
           print("User_inital api call  $userId");
 
