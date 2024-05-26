@@ -3,12 +3,14 @@ class User {
   String username;
   String password;
   String country;
+  String? userId; //로그인에 성공할때 username으로 할당, 그 외엔 null
 
   User({
     required this.id,
     required this.username,
     required this.password,
     required this.country,
+    this.userId
   });
 
   Map<String, dynamic> toMap() {

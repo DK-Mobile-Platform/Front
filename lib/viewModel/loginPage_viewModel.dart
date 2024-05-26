@@ -8,13 +8,14 @@ class LoginViewModel extends ChangeNotifier {
   late BuildContext context;
 
   LoginViewModel(this.context) {
-    user = User(id: '', username: '', password: '', country: '');
+    user = User(id: '', username: '', password: '', country: '',userId:'');
   }
 
   void login() async {
     User? loggedInUser =
     await DBHelper.getUser(user.username, user.password);
     if (loggedInUser != null) {
+      user.userId = user.username; // 만약 로그인에 성공하면 userId를 할당
       _navigateToMainPage(context);
     } else {
       showDialog(
