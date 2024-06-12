@@ -1,7 +1,5 @@
 # 🌐 Front with FLUTTER
 
-## 실행영상
-<img src= "https://github.com/DK-Mobile-Platform/Front/assets/94334477/bf964c4b-acfe-4873-92b5-4e771491c369" width= "200" height="400">
 
 ## MVVM 구조로 코드를 작성
 * dataSource : 데이터를 가져오는 영역
