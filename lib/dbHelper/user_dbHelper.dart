@@ -23,7 +23,6 @@ class DBHelper {
   }
   //********** mobile version **********
 
-
   //********** web verion **********
   // await _initDatabaseFactory();
   //   _db = await initDB();
@@ -38,6 +37,7 @@ class DBHelper {
 
   static initDB() async {
     String path = join(await getDatabasesPath(), 'my_database.db');
+    await deleteDatabase(path);
     return openDatabase(
       path,
       onCreate: (db, version) {
@@ -48,7 +48,7 @@ class DBHelper {
             username TEXT, 
             password TEXT,  
             country TEXT, 
-            userID Text
+            userId Text
           )
           ''',
         );
