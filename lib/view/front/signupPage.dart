@@ -42,7 +42,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   void _handleInputChange(BuildContext context, String value, String field) {
     final viewModel = Provider.of<SignUpViewModel>(context, listen: false);
-    bool isAllowed = RegExp(r'^[a-zA-Z]+$').hasMatch(value);
+    bool isAllowed = RegExp(r'^[a-zA-Z0-9]+$').hasMatch(value);
 
     if (!isAllowed) {
       setState(() {
@@ -123,7 +123,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   _handleInputChange(context, value, 'username');
                 },
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z]+$')),
+                  FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')),
                 ],
                 decoration: InputDecoration(
                   labelText: 'name'.tr(),
@@ -166,7 +166,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   _handleInputChange(context, value, 'id');
                 },
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z]+$')),
+                  FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')),
                 ],
                 decoration: InputDecoration(
                   labelText: 'id'.tr(),
@@ -209,7 +209,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   _handleInputChange(context, value, 'password');
                 },
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z]+$')),
+                  FilteringTextInputFormatter.allow(RegExp(r'^[a-zA-Z0-9]+$')),
                 ],
                 decoration: InputDecoration(
                   labelText: 'password'.tr(),

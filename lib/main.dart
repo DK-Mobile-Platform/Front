@@ -7,6 +7,8 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
 
+
+
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('ko', 'KR'), Locale('zh', 'CN')],

@@ -4,6 +4,11 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:mobileplatform_project/model/user.dart';
 
+//********** web verion **********
+// import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+// import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
+//********** web verion **********
+
 class DBHelper {
   static Database? _db;
 
@@ -11,9 +16,25 @@ class DBHelper {
     if (_db != null) {
       return _db!;
     }
+
+  //********** mobile version **********
     _db = await initDB();
     return _db!;
   }
+  //********** mobile version **********
+
+
+  //********** web verion **********
+  // await _initDatabaseFactory();
+  //   _db = await initDB();
+  //   return _db!;
+  // }
+  //
+  // static Future<void> _initDatabaseFactory() async {
+  //   sqfliteFfiInit();
+  //   databaseFactory = databaseFactoryFfiWeb;
+  // }
+  //********** web verion **********
 
   static initDB() async {
     String path = join(await getDatabasesPath(), 'my_database.db');
